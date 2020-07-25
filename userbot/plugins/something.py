@@ -1,4 +1,4 @@
-''' Whatever Plugin by Noobs of Telegram i.e. @PhycoNinja13b and @Halto_Tha '''
+''' Whatever Plugin by Noobs of Telegram i.e. @pureindialover '''
 
 from telethon import events
 import asyncio
@@ -21,12 +21,11 @@ async def test(event):
 
 🏬🏨🏫🏢🏤🏥🏦🏪🏫
               🌲/     l🚍\🌳👭
-           🌳/  🚘 l  🏃 \🌴 👬                        👬     🌴/            l  🚔    \🌲
-      🌲/   🚖     l        \        
-          🌳/🚶           |   🚍         \ 🌴🚴🚴
+           🌳/  🚘 l  🏃 \🌴 👬                       👬  🌴/            l  🚔    \🌲
+      🌲/   🚖     l               \
+   🌳/🚶           |   🚍         \ 🌴🚴🚴
 🌴/                    |                     \🌲""")
 
-# @PhycoNinja13b 's Part begin from here
 
 @borg.on(admin_cmd(pattern=r"hi"))
 async def hi(event):

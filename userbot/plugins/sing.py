@@ -1,86 +1,207 @@
-""" Sing a song... 
-    Command .singint(finished)
-            .singhi(pending)
-            .singpu(pending)
-    By @PhycoNinja13b """
+""" Sing a Malayalam song... 
+    Command .sing
+ """
+
+
+
 
 from telethon import events
+
 import asyncio
+
 import os
+
 import sys
+
 import random
+
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern=r"sing$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"sing", outgoing=True))
+
 async def _(event):
+
     if event.fwd_from:
+
         return
+
     await event.edit("Singing...")
+
     await asyncio.sleep(2)
-    x=(random.randrange(1,33))
+
+    x=(random.randrange(1,44))
+
     if x==1:
-        await event.edit("🎶 I'm in love with the shape of you \n We push and pull like a magnet do\n Although my heart is falling too \n I'm in love with your body \n And last night you were in my room \n And now my bedsheets smell like you \n Every day discovering something brand new 🎶  \n 🎶  I'm in love with your body \n Oh—I—oh—I—oh—I—oh—I \n I'm in love with your body \n Oh—I—oh—I—oh—I—oh—I \n I'm in love with your body \n Oh—I—oh—I—oh—I—oh—I \n I'm in love with your body 🎶 \n **-Shape of You**")
+
+        await event.edit("🎶 ഒരുനാൾ തരളമിവനിൽ... പടരൂ വനലതികയായ്... മുറുകെ... മതിവരുവോളം സഖീ... 🎶")
+
     if x==2:
-        await event.edit("🎶 I've been reading books of old \n The legends and the myths \n Achilles and his gold \n Hercules and his gifts \n Spiderman's control \n And Batman with his fists \n And clearly I don't see myself upon that list 🎶 \n **-Something Just Like This **")
+
+        await event.edit("🎶 അഴലിന്റെ ആഴങ്ങളിൽ അവൾ മാഞ്ഞുപോയ്... നോവിന്റെ തീരങ്ങളിൽ ഞാൻ മാത്രമായ്... 🎶")
+
     if x==3:
-        await event.edit("🎶 I don't wanna live forever \n 'Cause I know I'll be livin' in vain \n And I don't wanna fit wherever \n I just wanna keep callin' your name \n Until you come back home \n I just wanna keep callin' your name \n Until you come back home \n I just wanna keep callin' your name \n Until you come back home 🎶 \n **-I don't Wanna Live Forever **")
+
+        await event.edit("🎶 ആവണിപ്പൊന്നൂഞ്ഞാലാടിക്കാം നിന്നെ ഞാൻ... ആയില്ല്യം കാവിലെ വെണ്ണിലാവേ... 🎶")
     if x==4:
-        await event.edit("🎶 Oh, hush, my dear, it's been a difficult year \n And terrors don't prey on \n Innocent victims \n Trust me, darling, trust me darling \n It's been a loveless year \n I'm a man of three fears \n Integrity, faith and \n Crocodile tears \n Trust me, darling, trust me, darling 🎶 \n **-Bad Lier")
+
+        await event.edit("🎶 ഇന്ദ്രനീലിമയോലും ഈ മിഴി പൊയ്കകളിൽ... ഇന്നലെ നിൻ മുഖം നീ നോക്കി നിന്നൂ... 🎶")
+
     if x==5:
-        await event.edit("🎶 Walking down 29th and Park \n I saw you in another's arms \n Only a month we've been apart \n **You look happier** \n \n Saw you walk inside a bar \n He said something to make you laugh \n I saw that both your smiles were twice as wide as ours \n Yeah, you look happier, you do 🎶 \n **-Happier **")
+
+        await event.edit("🎶 മയിലായ് പറന്നുവാ മഴവില്ലു തോൽക്കുമെന്നഴകേ... 🎶")
+
     if x==6:
-        await event.edit("🎶 I took the supermarket flowers from the windowsill \n I threw the day old tea from the cup \n Packed up the photo album Matthew had made \n Memories of a life that's been loved \n Took the get well soon cards and stuffed animals \n Poured the old ginger beer down the sink \n Dad always told me, 'don't you cry when you're down' \n But mum, there's a tear every time that I blink 🎶 \n **-Supermarket Flowers**")
+
+        await event.edit("🎶 നിലാവിന്റെ നീലഭസ്മ കുറിയണിഞ്ഞവളേ... കാതിലോലക്കമ്മലിട്ടു കുണുങ്ങി നിന്നവളേ... 🎶")
+
     if x==7:
-        await event.edit("🎶 And you and I we're flying on an aeroplane tonight \n We're going somewhere where the sun is shining bright \n Just close your eyes \n And let's pretend we're dancing in the street \n In Barcelona \n Barcelona \n Barcelona \n Barcelona 🎶 \n **-Barcelona **")    
+
+        await event.edit("🎶 നീയൊരു പുഴയായ് തഴുകുമ്പോൾ ഞാൻ പ്രണയം വിടരും കരയാവും... 🎶")    
+
     if x==8:
-        await event.edit("🎶 Maybe I came on too strong \n Maybe I waited too long \n Maybe I played my cards wrong \n Oh, just a little bit wrong \n Baby I apologize for it \n \n I could fall, or I could fly \n Here in your aeroplane \n And I could live, I could die \n Hanging on the words you say \n And I've been known to give my all \n And jumping in harder than \n Ten thousand rocks on the lake 🎶 \n **-Dive**")
+
+        await event.edit("🎶 അരികിൽ നീയുണ്ടായിരുന്നെങ്കിലെന്നു ഞാൻ... ഒരുമാത്ര വെറുതേ നിനച്ചുപോയി... 🎶")
+
     if x==9:
-        await event.edit("🎶 I found a love for me \n Darling just dive right in \n And follow my lead \n Well I found a girl beautiful and sweet \n I never knew you were the someone waiting for me \n 'Cause we were just kids when we fell in love \n Not knowing what it was \n \n I will not give you up this time \n But darling, just kiss me slow, your heart is all I own \n And in your eyes you're holding mine 🎶 \n **-Perfect**")
+
+        await event.edit("🎶 എത്രയോ ജന്മമായ് നിന്നെഞാൻ തേടുന്നു... അത്രമേൽ ഇഷ്ടമായ് നിന്നെയെൻ പുണ്യമേ... 🎶")
+
     if x==10:
-        await event.edit("🎶 I was born inside a small town, I lost that state of mind \n Learned to sing inside the Lord's house, but stopped at the age of nine \n I forget when I get awards now the wave I had to ride \n The paving stones I played upon, they kept me on the grind \n So blame it on the pain that blessed me with the life 🎶 \n **-Eraser**")
+
+        await event.edit("🎶 മഴത്തുള്ളികൾ പൊഴിഞ്ഞീടുമീ നാടൻ വഴി... നനഞ്ഞോടിയെൻ കുടക്കീഴിൽ നീ വന്ന നാൾ... 🎶")
+     
     if x==11:
-        await event.edit("🎶 Say, go through the darkest of days \n Heaven's a heartbreak away \n Never let you go, never let me down \n Oh, it's been a hell of a ride \n Driving the edge of a knife. \n Never let you go, never let me down \n \n Don't you give up, nah-nah-nah \n I won't give up, nah-nah-nah \n Let me love you \n Let me love you 🎶 \n **-Let me Love You**")
+
+        await event.edit("🎶 കരളേ നിൻ കൈ പിടിച്ചാൽ, കടലോളം വെണ്ണിലാവ്... ഉൾക്കണ്ണിൻ കാഴ്ചയിൽ നീ, കുറുകുന്നൊരു വെൺപിറാവ്... 🎶")
+
     if x==12:
-        await event.edit("🎶 I'll stop time for you \n The second you say you'd like me to \n I just wanna give you the loving that you're missing \n Baby, just to wake up with you \n Would be everything I need and this could be so different \n Tell me what you want to do \n \n 'Cause I know I can treat you better \n Than he can \n And any girl like you deserves a gentleman 🎶 **-Treat You Better**")
+
+        await event.edit("🎶 മറന്നിട്ടുമെന്തിനോ മനസ്സിൽ തുളുമ്പുന്നു മൗനാനുരാഗത്തിൻ ലോലഭാവം... 🎶")
+    
     if x==13:
-        await event.edit("🎶 You're the light, you're the night \n You're the color of my blood \n You're the cure, you're the pain \n You're the only thing I wanna touch \n Never knew that it could mean so much, so much \n You're the fear, I don't care \n 'Cause I've never been so high \n Follow me through the dark \n Let me take you past our satellites \n You can see the world you brought to life, to life \n \n So love me like you do, lo-lo-love me like you do \n Love me like you do, lo-lo-love me like you do 🎶 \n **-Love me Like you Do**")
+
+        await event.edit("🎶 മഴക്കാലം എനിക്കായി മയിൽ ചെലുള്ള പെണ്ണേ നിന്നെത്തന്നേ... 🎶")
+
     if x==14:
-        await event.edit("🎶 Spent 24 hours \n I need more hours with you \n You spent the weekend \n Getting even, ooh ooh \n We spent the late nights \n Making things right, between us \n But now it's all good baby \n Roll that Backwood baby \n And play me close \n \n 'Cause girls like you \n Run around with guys like me \n 'Til sundown, when I come through \n I need a girl like you, yeah yeah 🎶 \n **-Girls Like You**")
+
+        await event.edit("🎶 മിഴിയറിയാതെ വന്നു നീ മിഴിയൂഞ്ഞാലിൽ... കനവറിയാതെയേതോ കിനാവു പോലെ... 🎶")
+        
     if x==15:
-        await event.edit("🎶 Oh, angel sent from up above \n You know you make my world light up \n When I was down, when I was hurt \n You came to lift me up \n Life is a drink and love's a drug \n Oh, now I think I must be miles up \n When I was a river dried up \n You came to rain a flood 🎶**-Hymn for the Weekend ** ")
+
+        await event.edit("🎶 ചന്ദനച്ചോലയിൽ മുങ്ങിനീരാടിയെൻ ഇളമാൻ കിടാവേ ഉറക്കമായോ... 🎶")
+
     if x==16:
-        await event.edit("🎶 I've known it for a long time \n Daddy wakes up to a drink at nine \n Disappearing all night \n I don’t wanna know where he's been lying \n I know what I wanna do \n Wanna run away, run away with you \n Gonna grab clothes, six in the morning, go 🎶 \n **-Runaway **")
+
+        await event.edit("🎶 കറുത്തപെണ്ണേ നിന്നെ കാണാഞ്ഞിട്ടൊരു നാളുണ്ടേ... 🎶")
+     
     if x==17:
-        await event.edit("🎶 You were the shadow to my light \n Did you feel us \n Another start \n You fade away \n Afraid our aim is out of sight \n Wanna see us \n Alive 🎶 \n **-Faded**")
+
+        await event.edit("🎶 താമരപ്പൂവിൽ വാഴും ദേവിയല്ലോ നീ... പൂനിലാക്കടവിൽ പൂക്കും പുണ്യമല്ലോ നീ... 🎶")
+
     if x==18:
-        await event.edit("🎶 It's been a long day without you, my friend \n And I'll tell you all about it when I see you again \n We've come a long way from where we began \n Oh I'll tell you all about it when I see you again \n When I see you again 🎶 \n **-See you Again**")
+
+        await event.edit("🎶 പാടം പൂത്തകാലം പാടാൻ വന്നു നീയും... 🎶")
+
     if x==19:
-        await event.edit("🎶 I can swallow a bottle of alcohol and I'll feel like Godzilla \n Better hit the deck like the card dealer \n My whole squad's in here, walking around the party \n A cross between a zombie apocalypse and big Bobby 'The \n Brain' Heenan which is probably the \n Same reason I wrestle with mania 🎶 \n **-Godzilla**")
+
+        await event.edit("🎶 രാജഹംസമേ മഴവിൽ കുടിലിൽ... സ്നേഹദൂതുമായ് വരുമോ... 🎶")
+
     if x==20:
-        await event.edit("🎶 Yeah, I'm gonna take my horse to the old town road \n I'm gonna ride 'til I can't no more \n I'm gonna take my horse to the old town road \n I'm gonna ride 'til I can't no more (Kio, Kio) 🎶 \n **-Old Town Road**")
+
+        await event.edit("🎶 പത്തുവെളുപ്പിന് മുറ്റത്തു നിക്കണ കസ്തൂരി മുല്ലയ്ക്ക് കാത്തുകുത്ത്... എന്റെ കസ്തൂരി മുല്ലയ്ക്ക് കാത്തുകുത്ത്... 🎶")
+
     if x==21:
-        await event.edit("🎶 Oh-oh, ooh \n You've been runnin' round, runnin' round, runnin' round throwin' that dirt all on my name \n 'Cause you knew that I, knew that I, knew that I'd call you up \n You've been going round, going round, going round every party in L.A. \n 'Cause you knew that I, knew that I, knew that I'd be at one, oh 🎶 \n **-Attention **")
+        
+        await event.edit("🎶 മഞ്ഞൾ പ്രസാദവും നെറ്റിയിൽ ചാർത്തി... മഞ്ഞക്കുറിമുണ്ടു ചുറ്റി... 🎶")
+        
     if x==22:
-        await event.edit("🎶 This hit, that ice cold \n Michelle Pfeiffer, that white gold \n This one for them hood girls \n Them good girls straight masterpieces \n Stylin', wilin', livin' it up in the city \n Got Chucks on with Saint Laurent \n Gotta kiss myself, I'm so pretty \n \n I'm too hot (hot damn) \n Called a police and a fireman \n I'm too hot (hot damn) \n Make a dragon wanna retire man \n I'm too hot (hot damn) \n Say my name you know who I am \n I'm too hot (hot damn) \n And my band 'bout that money, break it down 🎶 \n **-Uptown Funk**")
+        
+        await event.edit("🎶 അന്തിപ്പൊൻവെട്ടം കടലിൽ മെല്ലെത്താഴുമ്പോൾ... മാനത്തെ മുല്ലത്തറയില് മാണിക്യച്ചെപ്പ്... 🎶")
+       
     if x==23:
-        await event.edit("🎶 Just a young gun with the quick fuse \n I was uptight, wanna let loose \n I was dreaming of bigger things \n And wanna leave my own life behind \n Not a yes sir, not a follower \n Fit the box, fit the mold \n Have a seat in the foyer, take a number \n I was lightning before the thunder \n \n Thunder, feel the thunder \n Lightning then the thunder \n Thunder, feel the thunder \n Lightning then the thunder \n Thunder, thunder 🎶 \n **-Thunder**")
+
+        await event.edit("🎶 അമ്പലപ്പുഴെ ഉണ്ണിക്കണ്ണനോടു നീ... എന്തുപരിഭവം മെല്ലെയോതിവന്നുവോ... 🎶")
+
     if x==24:
-        await event.edit("🎶 Oh, love \n How I miss you every single day \n When I see you on those streets \n Oh, love \n Tell me there's a river I can swim that will bring you back to me \n 'Cause I don't know how to love someone else \n I don't know how to forget your face \n No, love \n God, I miss you every single day and now you're so far away \n So far away 🎶 \n **-So Far Away**")
+
+        await event.edit("🎶 കുടജാദ്രിയിൽ കുടചൂടുമാ കോടമഞ്ഞുപോലെയീ പ്രണയം... തഴുകുന്നു, എന്നെ പുണരുന്നു... 🎶")
+
     if x==25:
-        await event.edit("🎶 And if you feel you're sinking, I will jump right over \n Into cold, cold water for you \n And although time may take us into different places \n I will still be patient with you \n And I hope you know 🎶 \n **-Cold Water**")
+        
+        await event.edit("🎶 ശ്യാമാംബരം പുൽകുന്നൊരാ വെൺചന്ദ്രനായ് നിൻ പൂമുഖം... 🎶")
+        
     if x==26:
-        await event.edit("🎶 When you feel my heat \n Look into my eyes \n It's where my demons hide \n It's where my demons hide \n Don't get too close \n It's dark inside \n It's where my demons hide \n It's where my demons hide 🎶 \n **-Demons**")
+        
+        await event.edit("🎶 ശ്രീരാഗമോ തേടുന്നിതെൻ വീണതൻ പൊൻ തന്ത്രിയിൽ... 🎶")
+        
     if x==27:
-        await event.edit("🎶 Who do you love, do you love now? \n I wanna know the truth (whoa) \n Who do you love, do you love now? \n I know it's someone new \n You ain't gotta make it easy, where you been sleepin'? 🎶 \n **-Who do  Love? **")
+        
+        await event.edit("🎶 എന്തിനു വേറൊരു സൂര്യോദയം... നീയെൻ പൊന്നുഷസ്സന്ധ്യയല്ലേ... 🎶")
+        
     if x==28:
-        await event.edit("🎶 Your touch is magnetic \n 'Cause I can't forget it \n (There's a power pulling me back to you) \n And baby I'll let it \n 'Cause you're so magnetic I get it \n (When I'm waking up with you, oh) 🎶 \n **-Magnetic**")
+        
+        await event.edit("🎶 അനുരാഗിണീ ഇതായെൻ കരളിൽ വിരിഞ്ഞ പൂക്കൾ... 🎶")
+
     if x==29:
-        await event.edit("🎶 Girl my body don't lie, I'm outta my mind \n Let it rain over me, I'm rising so high \n Out of my mind, so let it rain over me \n \n Ay ay ay, ay ay ay let it rain over me \n Ay ay ay, ay ay ay let it rain over me 🎶 \n **-Rain over Me**")
-    if x==30:      
-        await event.edit("🎶 I miss the taste of a sweeter life \n I miss the conversation \n I'm searching for a song tonight \n I'm changing all of the stations \n I like to think that we had it all \n We drew a map to a better place \n But on that road I took a fall \n Oh baby why did you run away? \n \n I was there for you \n In your darkest times \n I was there for you \n In your darkest night 🎶 \n **-Maps**")
+        
+        await event.edit("🎶 പാടാം നമുക്കു പാടാം... വീണ്ടുമൊരു പ്രേമഗാനം... 🎶")
+        
+    if x==30:
+        
+        await event.edit("🎶 അല്ലിമലർ കാവിൽ പൂരം കാണാൻ... അന്നു നമ്മൾ പോയി രാവിൽ നിലാവിൽ... 🎶")
+    
     if x==31:
-        await event.edit("🎶 I wish—I wish that I was bulletproof, bulletproof \n I wish—I wish that I was bulletproof, bulletproof \n (Bullet-bulletproof, bullet-bullet-bulletproof) \n I'm trippin' on my words and my patience \n Writing every verse in a cadence \n To tell you how I feel, how I feel, how I feel (Yeah) \n This is how I deal, how I deal, how I deal (Yeah) \n With who I once was, now an acquaintance \n Think my confidence (My confidence) is in the basement \n Tryin' to keep it real, keep it real, keep it real (Yeah) \n 'Cause I'm not made of steel, made of steel 🎶 \n **-Bulletproof**")
+        
+        await event.edit("🎶 കറുകവയൽ കുരുവീ... മുറിവാലൻ കുരുവീ... തളിർ വെറ്റിലയുണ്ടോ... വരദക്ഷിണ വെക്കാൻ... 🎶")
+        
     if x==32:
-        await event.edit("🎶 You won't find him down on Sunset \n Or at a party in the hills \n At the bottom of the bottle \n Or when you're tripping on some pills \n When they sold you the dream you were just 16 \n Packed a bag and ran away \n And it's a crying shame you came all this way \n 'Cause you won't find Jesus in LA \n And it's a crying shame you came all this way \n 'Cause you won't find Jesus in LA 🎶 \n **-Jesus in LA**")
+        
+        await event.edit("🎶 കുന്നിമണിച്ചെപ്പു തുറന്നെണ്ണി നോക്കും നേരം, പിന്നിൽവന്നു കണ്ണു പൊത്തും കള്ളനെങ്ങു പോയി... 🎶")
+        
     if x==33:
-        await event.edit("Not in a mood to sing. Sorry!")
+        
+        await event.edit("🎶 നാടോടി പൂന്തിങ്കൾ മുടിയിൽ ചൂടി നവരാത്രി പുള്ളോർക്കുടമുള്ളിൽ മീട്ടി കണിക്കൊന്നപ്പൂ മണിക്കമ്മലണിഞ്ഞും പുളിയിലക്കര കസവുമുണ്ടുടുത്തും പുഴയിന്നൊരു നാടൻ പെണ്ണായോ... 🎶")
+        
+    if x==34:
+        
+        await event.edit("🎶 നീ കണ്ണോട് കണ്ണോട് കണ്ണോരമായ് കാതോട് കാതോട് കാതോരമായ് നെഞ്ചോട് നെഞ്ചോട് നെഞ്ചോരമായ് നിറയേ....🎶")
+        
+    if x==35:
+        
+        await event.edit("🎶 എള്ളോളം തരി പൊന്നെന്തിനാ തനി തഞ്ചാവൂര് പട്ടെന്തിനാ തങ്കം തെളിയണ പട്ടു തിളങ്ങണ ചന്തം നിനക്കാടീ... 🎶")
+        
+    if x==36:
+        
+        await event.edit("🎶 പൂമുത്തോളെ നീയെരിഞ്ഞ വഴിയില്‍ ഞാന്‍മഴയായി പെയ്തെടീ... ആരീരാരം ഇടറല്ലേ മണിമുത്തേ കണ്മണീ... മാറത്തുറക്കാനിന്നോളം തണലെല്ലാം വെയിലായി കൊണ്ടെടീ... മാനത്തോളം മഴവില്ലായ്‌ വളരേണം എന്‍ മണീ ..🎶")
+        
+    if x==37:
+        
+        await event.edit("🎶 നീ ഹിമമഴയായ് വരൂ... ഹൃദയം അണിവിരലാൽ തൊടൂ... ഈ മിഴിയിണയിൽ സദാ പ്രണയം മഷിയെഴുതുന്നിതാ... ശിലയായി നിന്നിടാം നിന്നെ നോക്കീ യുഗമേറെയെന്റെ കൺചിമ്മിടാതെ... എൻജീവനേ......🎶")
+        
+    if x==38:
+        
+        await event.edit("🎶 ലല്ലലം ചൊല്ലുന്ന ചെല്ലകിളികളേ വേടന്‍ കുരുക്കും കടങ്കഥ ഇക്കഥ ഇക്കഥയ്ക്കുത്തരം തേടുവാന്‍ കൂടാമോ.. ഇല്ലെങ്കില്‍ സുല്ലെങ്കില്‍ ഇല്ലില്ല സമ്മാനം...🎶")
+        
+    if x==39:
+        
+        await event.edit("🎶 സുന്ദരീ സുന്ദരീ ഒന്നൊരുങ്ങി വാ നാളെയാണ് താലി മംഗലം.... 🎶")
+        
+    if x==40:
+        
+        await event.edit("🎶 തൂമിന്നൽ തൂവൽ തുമ്പാൽ മെല്ലെ എൻ പൂവൽ കനവിൽ തഴുകാൻ വരൂ... വാർതിങ്കൾ മായും രാവിൻ കൊമ്പിൽ ചിറകേറി നീ പുലർ വെയിൽ മലർ തരൂ...🎶")
+        
+    if x==41:
+        
+        await event.edit("🎶 ജീവാംശമായ് താനേ നീ എന്നിൽ കാലങ്ങൾ മുന്നേ വന്നൂ ...🎶")
+        
+    if x==42:
+        
+        await event.edit("🎶 ചന്ദനക്കുറി നീയണിഞ്ഞതിലെന്റെ പേര് പതിഞ്ഞില്ലേ.... 🎶")
+        
+    if x==43:
+        
+        await event.edit("🎶 ആവണിപ്പൊന്നൂഞ്ഞാലാടിക്കാം നിന്നെ ഞാൻ ആയില്യം കാവിലെ വെണ്ണിലാവേ പാതിരാമുല്ലകൾ താലിപ്പൂ ചൂടുമ്പോൾ പൂജിക്കാം നിന്നെ ഞാൻ പൊന്നു പോലെ...🎶")
+        
+    if x==44:
+        
+        await event.edit("🎶 പണ്ടു പണ്ടേ പൂത്ത മലരുകൾ മിന്നും മിന്നാമിനുങ്ങുകൾ ഒരു കുറി ഇനി വരുമോ...🎶")    

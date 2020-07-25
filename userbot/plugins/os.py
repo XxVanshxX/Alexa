@@ -1,10 +1,13 @@
+
 from telethon import events
+
 import asyncio
-from userbot import CMD_HELP 
-from userbot.utils import admin_cmd
+
+from uniborg.util import admin_cmd
 
 
-@borg.on(admin_cmd(pattern=f"macos$", outgoing=True))
+
+@borg.on(admin_cmd(pattern=r"macos"))
 
 async def _(event):
 
@@ -16,7 +19,7 @@ async def _(event):
 
     animation_ttl = range(0, 11)
 
-    await event.edit("macos")
+    await event.edit("Mac")
 
     animation_chars = [
         
@@ -35,12 +38,12 @@ async def _(event):
 
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+        await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"windows$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"windows"))
 
 async def _(event):
 
@@ -52,7 +55,7 @@ async def _(event):
 
     animation_ttl = range(0, 11)
 
-    await event.edit("windows")
+    await event.edit("Windows")
 
     animation_chars = [
         
@@ -71,13 +74,13 @@ async def _(event):
 
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+        await event.edit(animation_chars[i % 11])
 
 
 
-@borg.on(admin_cmd(pattern=f"linux$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"linux"))
 
 async def _(event):
 
@@ -89,7 +92,7 @@ async def _(event):
 
     animation_ttl = range(0, 11)
 
-    await event.edit("linux")
+    await event.edit("Linux")
 
     animation_chars = [
         
@@ -108,12 +111,12 @@ async def _(event):
 
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+        await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"stock$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"stock"))
 
 async def _(event):
 
@@ -125,7 +128,7 @@ async def _(event):
 
     animation_ttl = range(0, 11)
 
-    await event.edit("stock")
+    await event.edit("Stock")
 
     animation_chars = [
         
@@ -144,12 +147,12 @@ async def _(event):
 
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+        await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"os$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"os"))
 
 async def _(event):
 
@@ -161,7 +164,7 @@ async def _(event):
 
     animation_ttl = range(0, 7)
 
-    await event.edit("os")
+    await event.edit("OS")
 
     animation_chars = [
         
@@ -171,10 +174,11 @@ async def _(event):
             "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n✅ `.macos`\n☑️ `.windows`\n☑️ `.linux`\n☑️ `.stock`",
             "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n✅ `.macos`\n✅ `.windows`\n☑️ `.linux`\n☑️ `.stock`",
             "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n✅ `.macos`\n✅ `.windows`\n✅ `.linux`\n☑️ `.stock`",
-            "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n✅ `.macos`\n✅ `.windows`\n✅ `.linux`\n✅ `.stock`\n\nDeveloped By: @mrconfused"
-    ]
+            "__Current Loaded OS: Symbian OS__\n\n**To Boot Other OS, Use The Following Trigger:**\n✅ `.macos`\n✅ `.windows`\n✅ `.linux`\n✅ `.stock`\n\nDeveloped By: @pureindialover"
+ ]
+
     for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 7])
+        await event.edit(animation_chars[i % 7])

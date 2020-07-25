@@ -1,24 +1,30 @@
-"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
-base by: @r4v4n4
-created by: @A_Dark_Princ3
-if you change these, you gay.
+# base by: @r4v4n4
+# created by: @A_Dark_Princ3
+# if you change these, you gay
+
+"""Reply to an image/sticker/gif with .mmf` 'text on top' ; 'text on bottom
 """
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon import events
+
 from io import BytesIO
 from PIL import Image
 import asyncio
 import time
 from datetime import datetime
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 from uniborg.util import progress, humanbytes, time_formatter, admin_cmd
 import datetime
 from collections import defaultdict
-import math
+
 import os
-import requests
-import zipfile
+
+
+from telethon.errors.rpcerrorlist import StickersetInvalidError
+from telethon.errors import MessageNotModifiedError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
@@ -40,7 +46,7 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ")
+       await event.edit("`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' ")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
@@ -49,13 +55,14 @@ async def _(event):
     chat = "@MemeAutobot"
     sender = reply_message.sender
     file_ext_ns_ion = "@memetime.png"
+    file = await borg.download_file(reply_message.media)
     uploaded_gif = None
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
     else:
-       await event.edit("```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣ ```")
-    file = await borg.download_file(reply_message.media)
+     await event.edit("```Transfiguration Time! Hahaha Memifying this image! (」ﾟﾛﾟ)｣ ```")
+     await asyncio.sleep(5)
     
     async with borg.conversation("@MemeAutobot") as bot_conv:
           try:
@@ -69,9 +76,9 @@ async def _(event):
               await event.reply("```Please unblock @MemeAutobot and try again```")
               return
           if response.text.startswith("Forward"):
-              await event.edit("```can you kindly disable your forward privacy settings for good nibba?```")
+              await event.edit("```can you kindly disable your forward privacy settings```")
           if "Okay..." in response.text:
-            await event.edit("```🤨 NANI?! This is not an image! This will take sum tym to convert to image owo 🧐```")
+            await event.edit("``` This is not an image! This will take some tym to convert to image... UwU 🧐 🛑```")
             thumb = None
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
@@ -112,13 +119,13 @@ async def _(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="bot",
+                caption="Userbot: Pepe iz Lobe (PepeBot)",
                 # Courtesy: @A_Dark_Princ3
             )
             await event.delete()
-            
+         #   await borg.send_message(event.chat_id, "`☠️☠️Ah Shit... Here we go Again!🔥🔥`")
           elif not is_message_image(reply_message):
-            await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
+            await event.edit("Invalid message type. Plz choose right message type")
             return
           else: 
                await borg.send_file(event.chat_id, response.media)

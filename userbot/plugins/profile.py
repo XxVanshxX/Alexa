@@ -1,26 +1,15 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
 
 import os
-from telethon import events
-from telethon.tl import functions
-from userbot.utils import admin_cmd
 from telethon.errors import ImageProcessFailedError, PhotoCropSizeSmallError
-from telethon.errors.rpcerrorlist import (PhotoExtInvalidError,
-                                          UsernameOccupiedError)
-from telethon.tl.functions.account import (UpdateProfileRequest,
-                                           UpdateUsernameRequest)
+from telethon.errors.rpcerrorlist import (PhotoExtInvalidError,UsernameOccupiedError)
+from telethon.tl.functions.account import (UpdateProfileRequest,UpdateUsernameRequest)
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
-from telethon.tl.functions.photos import (DeletePhotosRequest,
-                                          GetUserPhotosRequest,
-                                          UploadProfilePhotoRequest)
+from telethon.tl.functions.photos import (DeletePhotosRequest,GetUserPhotosRequest,UploadProfilePhotoRequest)
 from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
 from userbot import bot, CMD_HELP
+from userbot.events import javes05
 
-# ====================== CONSTANT ===============================
+
 INVALID_MEDIA = "```The extension of the media entity is invalid.```"
 PP_CHANGED = "```Profile picture changed successfully.```"
 PP_TOO_SMOL = "```This image is too small, use a bigger image.```"
@@ -29,80 +18,83 @@ BIO_SUCCESS = "```Successfully edited Bio.```"
 NAME_OK = "```Your name was succesfully changed.```"
 USERNAME_SUCCESS = "```Your username was succesfully changed.```"
 USERNAME_TAKEN = "```This username is already taken.```"
-# ===============================================================
 
 
-@borg.on(admin_cmd(pattern="pbio (.*)"))  # pylint:disable=E0602
-async def _(event):
-    if event.fwd_from:
-        return
-    bio = event.pattern_match.group(1)
-    try:
-        await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
-            about=bio
-        ))
-        await event.edit("Succesfully changed my profile bio")
-    except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
+
+@javes05(outgoing=True, pattern="^!reserved$")
+async def mine(event):   
+    result = await bot(GetAdminedPublicChannelsRequest())
+    output_str = ""
+    for channel_obj in result.chats:
+        output_str += f"{channel_obj.title}\n@{channel_obj.username}\n\n"
+    await event.edit(output_str)
 
 
-@borg.on(admin_cmd(pattern="pname ((.|\n)*)"))  # pylint:disable=E0602,W0703
-async def _(event):
-    if event.fwd_from:
-        return
-    names = event.pattern_match.group(1)
-    first_name = names
-    last_name = ""
-    if  "|" in names:
-        first_name, last_name = names.split("|", 1)
-    try:
-        await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
-            first_name=first_name,
-            last_name=last_name
-        ))
-        await event.edit("My name was changed successfully")
-    except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
-
-
-@borg.on(admin_cmd(pattern="ppic"))  # pylint:disable=E0602
-async def _(event):
-    if event.fwd_from:
-        return
-    reply_message = await event.get_reply_message()
-    await event.edit("Downloading Profile Picture to my local ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
-    photo = None
-    try:
-        photo = await borg.download_media(  # pylint:disable=E0602
-            reply_message,
-            Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
-        )
-    except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
+@javes05(outgoing=True, pattern="^!name")
+async def update_name(name):    
+    newname = name.text[6:]
+    if " " not in newname:
+        firstname = newname
+        lastname = ""
     else:
-        if photo:
-            await event.edit("now, Uploading to @Telegram ...")
-            file = await borg.upload_file(photo)  # pylint:disable=E0602
-            try:
-                await borg(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
-                    file
-                ))
-            except Exception as e:  # pylint:disable=C0103,W0703
-                await event.edit(str(e))
-            else:
-                await event.edit("My profile picture was succesfully changed")
-    try:
-        os.remove(photo)
-    except Exception as e:  # pylint:disable=C0103,W0703
-        logger.warn(str(e))  # pylint:disable=E0602
+        namesplit = newname.split(" ", 1)
+        firstname = namesplit[0]
+        lastname = namesplit[1]
+    await name.client(
+        UpdateProfileRequest(first_name=firstname, last_name=lastname))
+    await name.edit(NAME_OK)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="username (.*)"))
+@javes05(outgoing=True, pattern="^!setpfp$")
+async def set_profilepic(propic):
+    await propic.edit("`Processing...`") 
+    replymsg = await propic.get_reply_message()
+    photo = None
+    #Prevent Channel Bug to control Change Profile
+    if propic.is_channel and not propic.is_group:
+        await propic.edit("`Setpfp Commad isn't permitted on channels`")
+        return
+    if replymsg.media:
+        if isinstance(replymsg.media, MessageMediaPhoto):
+            photo = await propic.client.download_media(message=replymsg.photo)
+        elif "image" in replymsg.media.document.mime_type.split('/'):
+            photo = await propic.client.download_file(replymsg.media.document)
+        else:
+            await propic.edit(INVALID_MEDIA)
+    if photo:
+        try:
+            await propic.client(
+                UploadProfilePhotoRequest(await
+                                          propic.client.upload_file(photo)))
+            os.remove(photo)
+            await propic.edit(PP_CHANGED)
+        except PhotoCropSizeSmallError:
+            await propic.edit(PP_TOO_SMOL)
+        except ImageProcessFailedError:
+            await propic.edit(PP_ERROR)
+        except PhotoExtInvalidError:
+            await propic.edit(INVALID_MEDIA)
+
+
+@javes05(outgoing=True, pattern="^!setbio (.*)")
+async def set_biograph(setbio):    
+    await setbio.edit("`Processing...`")
+    newbio = setbio.pattern_match.group(1)  
+    if setbio.is_channel and not setbio.is_group:
+        await setbio.edit("`setbio Commad isn't permitted on channels`")
+        return
+    await setbio.client(UpdateProfileRequest(about=newbio))
+    await setbio.edit(BIO_SUCCESS)
+
+
+@javes05(outgoing=True, pattern="^!username (.*)")
 async def update_username(username):
     """ For .username command, set a new username in Telegram. """
-    newusername = username.pattern_match.group(1)
+    await username.edit("`Processing...`")
+    newusername = username.pattern_match.group(1) 
+    if username.is_channel and not username.is_group:
+        await username.edit("`username Commad isn't permitted on channels`")
+        return
     try:
         await username.client(UpdateUsernameRequest(newusername))
         await username.edit(USERNAME_SUCCESS)
@@ -110,16 +102,15 @@ async def update_username(username):
         await username.edit(USERNAME_TAKEN)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="count$"))
-async def count(event):
-    """ For .count command, get profile stats. """
+@javes05(outgoing=True, pattern="^!count$")
+async def count(event):    
     u = 0
     g = 0
     c = 0
     bc = 0
     b = 0
     result = ""
-    await event.edit("`Processing..`")
+    await event.edit("`Processing...`")
     dialogs = await bot.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
@@ -137,20 +128,22 @@ async def count(event):
                 c += 1
         else:
             print(d)
-
     result += f"`Users:`\t**{u}**\n"
     result += f"`Groups:`\t**{g}**\n"
     result += f"`Super Groups:`\t**{c}**\n"
     result += f"`Channels:`\t**{bc}**\n"
     result += f"`Bots:`\t**{b}**"
-
     await event.edit(result)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
+@javes05(outgoing=True, pattern=r"^!delpfp")
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
-    group = delpfp.text[8:]
+    await delpfp.edit("`Processing...`")
+    group = delpfp.text[8:]    
+    if delpfp.is_channel and not delpfp.is_group:
+        await delpfp.edit("`delpfp Commad isn't permitted on channels`")
+        return
     if group == 'all':
         lim = 0
     elif group.isdigit():
@@ -173,30 +166,21 @@ async def remove_profilepic(delpfp):
     await delpfp.edit(
         f"`Successfully deleted {len(input_photos)} profile picture(s).`")
 
-@borg.on(admin_cmd(pattern="myusernames$"))
-async def _(event):
-    if event.fwd_from:
-        return
-    result = await bot(GetAdminedPublicChannelsRequest())
-    output_str = ""
-    for channel_obj in result.chats:
-        output_str += f"- {channel_obj.title} @{channel_obj.username} \n"
-    await event.edit(output_str)
-    
+
 CMD_HELP.update({
-    "profile":
-    ".username <new_username>\
-\nUsage: Changes your Telegram username.\
-\n\n.pname <firstname> or .pname <firstname> <lastname>\
-\nUsage: Changes your Telegram name.(First and last name will get split by the first space)\
-\n\n.setpfp or .ppic\
-\nUsage: Reply with .setpfp or .ppic to an image to change your Telegram profie picture.\
-\n\n.pbio <new_bio>\
-\nUsage: Changes your Telegram bio.\
-\n\n.delpfp or .delpfp <number>/<all>\
-\nUsage: Deletes your Telegram profile picture(s).\
-\n\n.myusernames\
-\nUsage: Shows usernames reserved by you.that is created by you channels or groups\
-\n\n.count\
-\nUsage: Counts your groups, chats, bots etc..."
+    "me":
+    "`!username <new_username>`\
+\n**Usage:** Changes your Telegram username.\
+\n\n`!name <firstname> or !name <firstname> <lastname>`\
+\n**Usage:** Changes your Telegram name.(First and last name will get split by the first space)\
+\n\n`!setpfp`\
+\n**Usage:** Reply with .setpfp to an image to change your Telegram profie picture.\
+\n\n`!setbio <new_bio>`\
+\n**Usage:** Changes your Telegram bio.\
+\n\n`!delpfp <number>/<all>`\
+\n**Usage:** Deletes your Telegram profile picture(s).\
+\n\n`!reserved`\
+\n**Usage:** Shows usernames reserved by you.\
+\n\n`!count`\
+\n**Usage:** Counts your groups, chats, bots etc..."
 })
