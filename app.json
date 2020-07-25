@@ -1,6 +1,6 @@
 {
-  "name": "Catuserbot",
-  "description": "Userbot created by a SNAPDRAGON and custom fork by https://t.me/mrconfused contact @catuserbot_support for support",
+  "name": "Alexa",
+  "description": "Userbot created by a XxVanshxX and Custom Fork by https://t.me/simply_kuawit . Contact @alexa_chat for support",
   "logo": "https://telegra.ph/file/3d60313110c58684b31ea.jpg",
   "keywords": [
     "telegram",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/sandy1709/catuserbot/",
+  "repository": "https://github.com/XxVanshxX/alexa/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -23,7 +23,7 @@
       "required": false
     },
     "ALIVE_NAME": {
-      "description": "give your name",
+      "description": "Type your Display Name",
       "value": ""
     },
     "APP_ID": {
