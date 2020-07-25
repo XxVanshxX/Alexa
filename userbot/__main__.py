@@ -50,7 +50,7 @@ for name in files:
 
 import userbot._core
 
-print("Yay your userbot is officially working.")
+print("Congrats. Alexa is Officially Working :)")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
