@@ -1,5 +1,5 @@
 
-# CAT USERBOT
+# Alexa USERBOT
 
 ### The Easy Way to deploy the bot
 Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from [Bot Father](https://t.me/botfather) and then Generate stringsession by clicking on run.on.repl.it button below and then click on deploy to heroku . Before clicking on deploy to heroku just click on fork and star just below
@@ -8,11 +8,11 @@ Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from 
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 <p align="center">
-  <a href="https://github.com/sandy1709/catuserbot/fork">
+  <a href="https://github.com/XxVanshxX/catuserbot/fork">
     <img src="https://img.shields.io/github/forks/sandy1709/catuserbot?label=Fork&style=social">
     
   </a>
-  <a href="https://github.com/sandy1709/catuserbot">
+  <a href="https://github.com/XxVanshxX/catuserbot">
     <img src="https://img.shields.io/github/stars/sandy1709/catuserbot?style=social">
   </a>
 </p>
@@ -21,7 +21,7 @@ Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from 
 [![catuserbot logo](https://telegra.ph/file/7e1e89621fabbf02596f8.jpg)](https://heroku.com/deploy)
 
 
-### Join [here](https://t.me/catuserbot17) for updates and tuts and [here](https://t.me/catuserbot_support) for discussion and bugs
+### Join [here](https://t.me/alexa_tg) for updates and tuts and [here](https://t.me/alexa_chat) for discussion and bugs
 
 ### The Normal Way
 
